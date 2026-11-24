@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>VolleyDesk — Manajemen Ekstrakurikuler</title>
+  <link id="app-favicon" rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css?v=volleydesk-features-18">
+</head>
+<body>
+  <div class="session-loading" id="session-loading" role="status">Memeriksa sesi...</div>
+  <section class="login-screen" id="login-screen" aria-labelledby="login-title" hidden>
+    <div class="login-card">
+      <div class="brand login-brand"><div class="brand-mark">V</div><div class="brand-name">VolleyDesk<span class="brand-sub">Team management</span></div></div>
+      <div class="login-copy">
+        <div class="eyebrow">Area anggota</div>
+        <h1 id="login-title">Selamat datang kembali</h1>
+        <p class="subheading">Masuk untuk mengelola kegiatan ekstrakurikuler bola voli.</p>
+      </div>
+      <form id="login-form" class="login-form">
+        <div class="field"><label for="login-email">Username atau email</label><input id="login-email" name="identifier" type="text" autocomplete="username" required placeholder="nama@sekolah.sch.id"></div>
+        <div class="field"><label for="login-password">Kata sandi</label><input id="login-password" name="password" type="password" autocomplete="current-password" required></div>
+        <p class="login-error" id="login-error" role="alert" hidden></p>
+        <button class="button login-submit" id="login-submit" type="submit">Masuk ke VolleyDesk</button>
+      </form>
+      <p class="login-help" id="login-help">Pemain dapat membuka Portal Publik melalui tautan yang dibagikan admin atau pelatih.</p>
+    </div>
+  </section>
+  <div class="app" id="app" hidden>
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">V</div>
+        <div class="brand-name">VolleyDesk<span class="brand-sub">Team management</span></div>
+        <button class="icon-button sidebar-toggle" id="sidebar-toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Minimalkan sidebar" title="Minimalkan sidebar">‹</button>
+      </div>
+      <div class="side-label">Menu utama</div>
+      <nav class="nav" id="nav"></nav>
+      <div class="side-bottom">
+        <div class="coach-chip">
+          <div class="avatar">VD</div>
+          <div><div class="user-name" id="sidebar-user">Pelatih Voli</div><div class="user-role" id="sidebar-role">Tim ekstrakurikuler</div></div>
+        </div>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div style="display:flex;align-items:center;gap:12px">
+          <button class="icon-button mobile-menu" id="menu-toggle" aria-label="Buka menu">☰</button>
+          <div class="crumb"><span id="crumb-brand">VolleyDesk</span> <span style="padding:0 6px;color:var(--line)">/</span> <strong id="crumb-title">Ringkasan</strong></div>
+        </div>
+        <div class="top-actions">
+          <span class="tag blue" id="top-role"></span>
+          <button class="button secondary small" id="profile-button" type="button">Profil</button>
+          <button class="icon-button" id="theme-toggle" aria-label="Ubah tema" title="Ubah tema">☾</button>
+          <button class="button secondary small" id="logout-button" type="button">Keluar</button>
+        </div>
+      </header>
+      <div class="content" id="content"></div>
+    </main>
+    <nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi bawah"></nav>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div id="modal-root"></div>
+  <script src="js/app.js?v=volleydesk-features-33" defer></script>
+</body>
+</html>

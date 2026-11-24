@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Portal Statistik Pemain — VolleyDesk</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/styles.css?v=volleydesk-features-14">
+  <link rel="stylesheet" href="/css/public-portal.css?v=volleydesk-portal-1">
+</head>
+<body class="portal-page">
+  <main class="portal-shell">
+    <header class="portal-brand">
+      <span class="portal-mark" aria-hidden="true">V</span>
+      <span><strong>VolleyDesk</strong><small>Portal statistik pemain</small></span>
+    </header>
+    <section class="portal-card" aria-labelledby="portal-title">
+      <div class="portal-intro">
+        <span class="portal-eyebrow">PORTAL PEMAIN</span>
+        <h1 id="portal-title">Lihat statistik pertandingan</h1>
+        <p>Temukan nama pemain, lalu verifikasi dengan tanggal lahir yang terdaftar.</p>
+      </div>
+      <form id="portal-form" class="portal-form" novalidate>
+        <div class="portal-field">
+          <label for="player-name">Nama pemain</label>
+          <input id="player-name" name="name" type="text" autocomplete="off" maxlength="80"
+            placeholder="Ketik minimal 3 huruf" role="combobox" aria-autocomplete="list"
+            aria-controls="player-suggestions" aria-expanded="false" required>
+          <div id="player-suggestions" class="portal-suggestions" role="listbox" hidden></div>
+        </div>
+        <div class="portal-field">
+          <label for="birth-date">Tanggal lahir</label>
+          <input id="birth-date" name="birthDate" type="date" autocomplete="bday" required>
+        </div>
+        <button id="portal-submit" class="button portal-submit" type="submit">Lihat statistik</button>
+      </form>
+      <p id="portal-status" class="portal-status" role="status" aria-live="polite" hidden></p>
+      <section id="portal-results" class="portal-results" aria-live="polite" hidden>
+        <div class="portal-result-head">
+          <div><span class="portal-eyebrow">STATISTIK PEMAIN</span><h2 id="result-name"></h2><p id="result-position"></p></div>
+        </div>
+        <div id="result-totals" class="portal-totals"></div>
+        <div class="portal-match-section">
+          <h3>Statistik setiap pertandingan</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Pertandingan</th><th>Tanggal</th><th>Teknik</th><th>Berhasil</th><th>Gagal</th></tr></thead>
+              <tbody id="result-matches"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <footer class="portal-privacy">Hanya statistik pertandingan yang ditampilkan. Data pribadi lain tidak dibagikan.</footer>
+    </section>
+  </main>
+  <script src="/js/public-portal.js?v=volleydesk-portal-1" defer></script>
+</body>
+</html>

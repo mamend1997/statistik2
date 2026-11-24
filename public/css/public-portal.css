@@ -1,0 +1,46 @@
+.portal-page { min-height: 100vh; background: radial-gradient(ellipse at 12% 0, var(--blue-soft), transparent 38%), var(--bg); }
+.portal-shell { width: min(940px, 100%); margin: 0 auto; padding: 34px 22px 52px; }
+.portal-brand { display: flex; align-items: center; gap: 11px; margin: 0 auto 22px; width: min(760px, 100%); color: var(--ink); }
+.portal-brand > span:last-child { display: grid; line-height: 1.25; }
+.portal-brand strong { font-size: 15px; letter-spacing: -.2px; }
+.portal-brand small { margin-top: 3px; color: var(--muted); font-size: 11px; }
+.portal-mark { display: grid; place-items: center; width: 39px; height: 39px; flex: none; border-radius: 13px; color: #fff; background: linear-gradient(145deg, #446fff, #2449c5); box-shadow: 0 7px 15px #315ee833; font-size: 20px; font-weight: 850; }
+.portal-card { width: min(760px, 100%); margin: 0 auto; padding: clamp(20px, 5vw, 38px); border: 1px solid var(--line); border-radius: 23px; background: var(--surface); box-shadow: var(--shadow); }
+.portal-intro { margin-bottom: 24px; }
+.portal-eyebrow { color: var(--blue); font-size: 10px; font-weight: 850; letter-spacing: 1.1px; }
+.portal-intro h1 { margin: 7px 0 5px; font-size: clamp(23px, 5vw, 31px); line-height: 1.2; letter-spacing: -.8px; }
+.portal-intro p, .portal-result-head p { margin: 0; color: var(--muted); font-size: 13px; }
+.portal-form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .8fr) auto; align-items: end; gap: 12px; }
+.portal-field { position: relative; display: grid; gap: 6px; min-width: 0; }
+.portal-field label { color: var(--ink); font-size: 11px; font-weight: 750; }
+.portal-field input { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 11px; outline: 0; color: var(--ink); background: var(--surface-2); }
+.portal-field input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px #315ee81b; }
+.portal-submit { min-height: 44px; white-space: nowrap; }
+.portal-suggestions { position: absolute; z-index: 4; top: calc(100% + 4px); right: 0; left: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); }
+.portal-suggestion { display: block; width: 100%; padding: 10px 12px; border: 0; border-bottom: 1px solid var(--line); color: var(--ink); background: transparent; text-align: left; }
+.portal-suggestion:last-child { border-bottom: 0; }
+.portal-suggestion:hover, .portal-suggestion:focus { background: var(--blue-soft); outline: 0; }
+.portal-status { margin: 14px 0 0; padding: 10px 12px; border-radius: 10px; color: var(--green); background: var(--green-soft); font-size: 12px; }
+.portal-status.is-error { border: 1px solid var(--red); color: var(--red); background: var(--surface-2); }
+.portal-results { margin-top: 28px; padding-top: 23px; border-top: 1px solid var(--line); }
+.portal-result-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.portal-result-head h2 { margin: 5px 0 2px; font-size: 21px; letter-spacing: -.4px; }
+.portal-totals { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.portal-total-card { display: grid; gap: 4px; min-width: 0; padding: 13px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface-2); }
+.portal-total-card span, .portal-total-card small { overflow: hidden; color: var(--muted); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.portal-total-card strong { color: var(--ink); font-size: 23px; line-height: 1.1; }
+.portal-match-section { margin-top: 23px; }
+.portal-match-section h3 { margin: 0 0 10px; font-size: 14px; }
+.portal-match-section table { min-width: 570px; }
+.portal-match-section th, .portal-match-section td { padding: 9px 11px; }
+.portal-match-section td:first-child { min-width: 130px; }
+.portal-match-section td strong, .portal-opponent { display: block; }
+.portal-opponent { margin-top: 2px; color: var(--muted); font-size: 10px; }
+.portal-privacy { margin-top: 21px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; line-height: 1.5; }
+@media (max-width: 700px) {
+  .portal-shell { padding: 20px 12px 32px; }
+  .portal-form { grid-template-columns: 1fr; }
+  .portal-submit { width: 100%; }
+  .portal-totals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .portal-total-card:last-child { grid-column: span 2; }
+}
