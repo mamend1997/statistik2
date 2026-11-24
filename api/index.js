@@ -1,25 +1,17 @@
 "use strict";
 
-const { app, start } = require("../server");
-
-let starting;
-
-async function handler(request, response) {
-  try {
-    if (!starting) {
-      starting = start();
-    }
-    await starting;
-    return app(request, response);
-  } catch (error) {
-    console.error("Vercel invocation failed:", error);
-    response.statusCode = 500;
+module.exports = function handler(request, response) {
+  if (request.url === "/api/status" || request.url.endsWith("/api/status")) {
+    response.statusCode = 200;
     response.setHeader("Content-Type", "application/json; charset=utf-8");
-    response.end(JSON.stringify({
-      error: "Aplikasi gagal dijalankan.",
-      detail: error && error.message ? error.message : "Kesalahan tidak diketahui."
-    }));
+    response.end(JSON.stringify({ status: "ok", runtime: "vercel", path: request.url }));
+    return;
   }
-}
 
-module.exports = handler;
+  response.statusCode = 503;
+  response.setHeader("Content-Type", "application/json; charset=utf-8");
+  response.end(JSON.stringify({
+    error: "Diagnose mode: Express belum dipasang kembali.",
+    path: request.url
+  }));
+};
