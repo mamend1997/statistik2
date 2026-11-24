@@ -17,7 +17,7 @@ async function handler(request, response) {
     response.setHeader("Content-Type", "application/json; charset=utf-8");
     response.end(JSON.stringify({
       error: "Aplikasi gagal dijalankan.",
-      detail: process.env.NODE_ENV === "development" ? error.message : undefined
+      detail: error && error.message ? error.message : "Kesalahan tidak diketahui."
     }));
   }
 }
