@@ -2,10 +2,7 @@
   "version": 2,
   "functions": {
     "server.js": {
-      "includeFiles": [
-        "node_modules/sql.js/dist/sql-wasm.wasm",
-        "public/**"
-      ],
+      "includeFiles": "{node_modules/sql.js/dist/sql-wasm.wasm,public/**}",
       "memory": 1024,
       "maxDuration": 60
     }
