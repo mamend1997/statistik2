@@ -1479,6 +1479,7 @@ async function runScheduledBackup() {
 
 let server;
 let scheduler;
+let startup;
 
 async function start() {
   try {
@@ -1541,6 +1542,24 @@ async function start() {
   }
 }
 
+async function handler(request, response) {
+  try {
+    if (!startup) {
+      startup = start().catch(error => {
+        startup = null;
+        throw error;
+      });
+    }
+    await startup;
+    return app(request, response);
+  } catch (error) {
+    console.error("VolleyDesk invocation failed:", error);
+    if (!response.headersSent) {
+      response.status(500).json({ error: "Terjadi kesalahan saat memulai aplikasi." });
+    }
+  }
+}
+
 if (!process.env.VERCEL) {
   start().catch(error => {
     console.error("VolleyDesk startup failed:", error);
@@ -1548,7 +1567,7 @@ if (!process.env.VERCEL) {
   });
 }
 
-module.exports = { app, start };
+module.exports = handler;
 
 function shutdown() {
   if (scheduler) clearInterval(scheduler);

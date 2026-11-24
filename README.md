@@ -65,3 +65,7 @@ Service menggunakan `npm start` dan port dinamis `PORT`. GitHub auto-deploy teta
 - `BACKUP_TIMEZONE=Asia/Jakarta` (opsional)
 
 Persistent volume dan pemakaian service dapat menimbulkan biaya. Periksa paket dan pemakaian Railway; biaya nol tidak dijamin.
+
+## Vercel
+
+Vercel menjalankan server melalui function dan database SQLite sementara di `/tmp`; data dapat hilang saat function dimulai ulang atau deployment baru. Untuk penggunaan produksi, gunakan database persisten dan atur `SQLITE_PATH` atau migrasikan penyimpanan ke database yang didukung. Atur `BOOTSTRAP_ADMIN_EMAIL`, `BOOTSTRAP_ADMIN_NAME`, dan `BOOTSTRAP_ADMIN_PASSWORD` pada Project Settings → Environment Variables.

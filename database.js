@@ -77,7 +77,7 @@ async function initializeDatabase() {
   databasePath = path.resolve(process.env.SQLITE_PATH || defaultDatabasePath);
   fs.mkdirSync(path.dirname(databasePath), { recursive: true });
   SQL = await initSqlJs({
-    locateFile: filename => require.resolve(`sql.js/dist/${filename}`)
+    locateFile: filename => path.join(path.dirname(require.resolve("sql.js")), filename)
   });
   db = fs.existsSync(databasePath)
     ? new SQL.Database(fs.readFileSync(databasePath))
