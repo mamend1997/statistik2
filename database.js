@@ -71,7 +71,10 @@ function transaction(work) {
 }
 
 async function initializeDatabase() {
-  databasePath = path.resolve(process.env.SQLITE_PATH || path.join(__dirname, "data", "volleydesk.sqlite"));
+  const defaultDatabasePath = process.env.VERCEL
+    ? path.join("/tmp", "data", "volleydesk.sqlite")
+    : path.join(__dirname, "data", "volleydesk.sqlite");
+  databasePath = path.resolve(process.env.SQLITE_PATH || defaultDatabasePath);
   fs.mkdirSync(path.dirname(databasePath), { recursive: true });
   SQL = await initSqlJs({
     locateFile: filename => require.resolve(`sql.js/dist/${filename}`)

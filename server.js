@@ -1533,16 +1533,22 @@ async function start() {
     response.status(500).json({ error: "Terjadi kesalahan pada server." });
   });
 
-  server = app.listen(port, "0.0.0.0", () => {
-    console.log(`VolleyDesk listening on port ${port}; SQLite at ${process.env.SQLITE_PATH || "data/volleydesk.sqlite"}`);
-  });
-  scheduler = setInterval(() => { runScheduledBackup().catch(error => console.error("Backup scheduler failed:", error)); }, 30000);
+  if (!process.env.VERCEL) {
+    server = app.listen(port, "0.0.0.0", () => {
+      console.log(`VolleyDesk listening on port ${port}; SQLite at ${process.env.SQLITE_PATH || "data/volleydesk.sqlite"}`);
+    });
+    scheduler = setInterval(() => { runScheduledBackup().catch(error => console.error("Backup scheduler failed:", error)); }, 30000);
+  }
 }
 
-start().catch(error => {
-  console.error("VolleyDesk startup failed:", error);
-  process.exitCode = 1;
-});
+if (!process.env.VERCEL) {
+  start().catch(error => {
+    console.error("VolleyDesk startup failed:", error);
+    process.exitCode = 1;
+  });
+}
+
+module.exports = { app, start };
 
 function shutdown() {
   if (scheduler) clearInterval(scheduler);
